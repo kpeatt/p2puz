@@ -22,9 +22,9 @@
     .puzzle-grid td.blacksquare {
       background: black; }
     .puzzle-grid td.remote-word-highlight {
-      background: lightgray; }
+      background: #ddd; }
     .puzzle-grid td.remote-cursor-highlight {
-      background: gray; }
+      background: #bbb; }
     .puzzle-grid td.word-highlight {
       background: powderblue; }
     .puzzle-grid td.cursor-highlight {
@@ -72,9 +72,9 @@
         border-radius: 50%;
         border: 1px solid gray;
         margin: -1px; }
-  .puzzle-grid.check .correct .text {
+  .puzzle-grid.check td:not(.blacksquare) .correct .text {
     color: green; }
-  .puzzle-grid.check .incorrect .text {
+  .puzzle-grid.check td:not(.blacksquare) :not(.correct) .user.text {
     color: red; }
   .puzzle-grid .square .solution {
     display: none; }
@@ -171,6 +171,39 @@
 .metadata {
   overflow: auto;
   padding: 0.25em; }
+.puzzle-toolbar {
+  display: flex;
+  z-index: 10;
+  min-height: 2em;
+  border-bottom: 1px solid #aaa;
+  box-shadow: 0 2px 2px 0px #c4c4c4; }
+
+.toolbar-tool {
+  padding: 0.5em;
+  flex: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center; }
+  .toolbar-tool:hover {
+    background-color: powderblue; }
+
+.toolbar-menu {
+  position: relative; }
+
+.toolbar-submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: white;
+  box-shadow: 0 0 5px 2px #c4c4c4;
+  display: none; }
+  .toolbar-menu:nth-last-child(-n+2) .toolbar-submenu {
+    right: 0;
+    left: unset; }
+  .toolbar-menu:hover .toolbar-submenu, .toolbar-menu-show .toolbar-submenu {
+    display: block; }
 .puzzle, .puzzle * {
   box-sizing: border-box; }
 
@@ -248,20 +281,17 @@
   min-width: 15em;
   min-height: 5em; }
 
-.meta-title {
-  font-size: 1.25em;
-  padding-bottom: 0; }
-
-.meta-byline {
-  padding-top: 0;
+.toolbar-puzzle-title {
+  flex: auto;
+  padding: 0.25em;
   display: flex;
   flex-flow: row wrap; }
-  .meta-byline .meta-author {
+  .toolbar-puzzle-title .meta-title {
+    font-size: 1.25em;
+    width: 100%; }
+  .toolbar-puzzle-title .meta-author, .toolbar-puzzle-title .meta-copyright {
     font-size: 0.8em;
-    flex: auto; }
-  .meta-byline .meta-copyright {
-    font-size: 0.8em;
-    flex: none; }
+    margin-right: 1em; }
 html, body, #puzzle {
   height: 100%;
   margin: 0;
