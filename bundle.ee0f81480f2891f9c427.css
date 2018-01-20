@@ -381,6 +381,11 @@
   display: none; }
   .chat-message:last-child .chat-timestamp {
     display: block; }
+.file-input input {
+  display: none; }
+
+.file-input * {
+  cursor: inherit; }
 .puzzle-app {
   font-family: sans-serif;
   font-size: 0.9em;
